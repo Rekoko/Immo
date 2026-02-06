@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immobilien Suche</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Immobilien Suche</h1>
+            <p class="subtitle">Finden Sie Ihre ideale Immobilie</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <aside class="filters-panel">
+            <h2>Filter</h2>
+
+            <!-- Price Filter -->
+            <div class="filter-group">
+                <label for="minPrice">Preis von:</label>
+                <div class="price-input">
+                    <input type="number" id="minPrice" placeholder="Min">
+                    <span>€</span>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label for="maxPrice">Preis bis:</label>
+                <div class="price-input">
+                    <input type="number" id="maxPrice" placeholder="Max">
+                    <span>€</span>
+                </div>
+            </div>
+
+            <!-- Rooms Filter -->
+            <div class="filter-group">
+                <label>Zimmer:</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="1" class="room-filter"> 1 Zimmer
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="2" class="room-filter"> 2 Zimmer
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="3" class="room-filter"> 3 Zimmer
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="4" class="room-filter"> 4 Zimmer
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" value="5" class="room-filter"> 5+ Zimmer
+                    </label>
+                </div>
+            </div>
+
+            <!-- City Filter -->
+            <div class="filter-group">
+                <label for="cityFilter">Stadt:</label>
+                <select id="cityFilter">
+                    <option value="">Alle Städte</option>
+                </select>
+            </div>
+
+            <!-- Reset Button -->
+            <button id="resetFilters" class="btn btn-secondary btn-block">
+                Filter zurücksetzen
+            </button>
+        </aside>
+
+        <section class="listings-section">
+            <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+                <div class="spinner"></div>
+                <p>Lade Inserate...</p>
+            </div>
+
+            <div id="errorContainer" class="error-container" style="display: none;">
+                <p id="errorMessage"></p>
+                <button onclick="location.reload()" class="btn btn-primary">Neu laden</button>
+            </div>
+
+            <div id="noResultsContainer" class="no-results" style="display: none;">
+                <p>Keine Inserate gefunden.</p>
+                <button onclick="document.getElementById('resetFilters').click()" class="btn btn-primary">
+                    Filter zurücksetzen
+                </button>
+            </div>
+
+            <div id="listingGrid" class="listing-grid"></div>
+
+            <div id="pagination" class="pagination"></div>
+        </section>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="detailModal" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
